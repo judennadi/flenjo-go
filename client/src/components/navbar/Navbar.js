@@ -50,20 +50,22 @@ const Navbar = () => {
     document.documentElement.scrollTop = 0;
     setReset(true);
     // setScroll(false);
-    const ul = document.querySelector(".nav-menu ul").childNodes;
+    if (document.querySelector(".nav-menu ul")) {
+      const ul = document.querySelector(".nav-menu ul").childNodes;
 
-    ul.forEach((li, index) => {
-      if (location.pathname === "/bars" && index === 1) {
-        document.querySelector(".nav-menu .active").classList.remove("active");
-        li.classList.add("active");
-      } else if (location.pathname === "/hotels" && index === 2) {
-        document.querySelector(".nav-menu .active").classList.remove("active");
-        li.classList.add("active");
-      } else if (location.pathname === "/" && index === 0) {
-        document.querySelector(".nav-menu .active").classList.remove("active");
-        li.classList.add("active");
-      }
-    });
+      ul.forEach((li, index) => {
+        if (location.pathname === "/bars" && index === 1) {
+          document.querySelector(".nav-menu .active").classList.remove("active");
+          li.classList.add("active");
+        } else if (location.pathname === "/hotels" && index === 2) {
+          document.querySelector(".nav-menu .active").classList.remove("active");
+          li.classList.add("active");
+        } else if (location.pathname === "/" && index === 0) {
+          document.querySelector(".nav-menu .active").classList.remove("active");
+          li.classList.add("active");
+        }
+      });
+    }
   }, [location.pathname]);
 
   useEffect(() => {
@@ -82,40 +84,40 @@ const Navbar = () => {
       <header className={scroll ? "sticky" : ""}>
         <Nav location={location} navigate={navigate} />
 
-        <div className="nav-menu">
-          <ul>
-            <li className="active" onClick={(e) => navClick(e, "/")}>
-              <div>
-                <img src={imgSwap === "Delivery" ? deliverySec : deliveryPri} alt="" />
-              </div>
-              <p>Delivery</p>
-            </li>
-            <li onClick={(e) => navClick(e, "/bars")}>
-              <div>
-                <img src={imgSwap === "Bars" ? barSec : barPri} alt="" />
-              </div>
-              <p>Bars</p>
-            </li>
-            <li onClick={(e) => navClick(e, "/hotels")}>
-              <div>
-                <img src={imgSwap === "Hotels" ? hotelSec : hotelPri} alt="" />
-              </div>
-              <p>Hotels</p>
-            </li>
-          </ul>
-        </div>
-
-        <hr className="nav-menu-hr" />
-
         {location.pathname === "/" || location.pathname === "/bars" || location.pathname === "/hotels" ? (
           <>
+            <div className="nav-menu">
+              <ul>
+                <li className="active" onClick={(e) => navClick(e, "/")}>
+                  <div>
+                    <img src={imgSwap === "Delivery" ? deliverySec : deliveryPri} alt="" />
+                  </div>
+                  <p>Delivery</p>
+                </li>
+                <li onClick={(e) => navClick(e, "/bars")}>
+                  <div>
+                    <img src={imgSwap === "Bars" ? barSec : barPri} alt="" />
+                  </div>
+                  <p>Bars</p>
+                </li>
+                <li onClick={(e) => navClick(e, "/hotels")}>
+                  <div>
+                    <img src={imgSwap === "Hotels" ? hotelSec : hotelPri} alt="" />
+                  </div>
+                  <p>Hotels</p>
+                </li>
+              </ul>
+            </div>
+
+            <hr className="nav-menu-hr" />
+
             <div className="filter-con">
               <Filters navigate={navigate} location={location} />
             </div>
             <div className="fil-scroll-backup"></div>
           </>
         ) : (
-          ""
+          <hr className="nav-menu-hr" style={{ marginTop: "5px" }} />
         )}
       </header>
       <div className="scroll-backup"></div>

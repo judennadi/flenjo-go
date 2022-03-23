@@ -1353,7 +1353,7 @@ section.best-food-list h4 {
 @media screen and (min-width: 600px) {
   .restaurant-details {
     max-width: var(--max);
-    margin: 20px auto 0;
+    margin: 10px auto 0;
   }
   .details-img-grid {
     display: grid;

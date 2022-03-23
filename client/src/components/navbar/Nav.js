@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { REMOVE_USER } from "../../reducers/auth";
 import { SET_RES_TERM, SET_BAR_TERM, SET_HOT_TERM } from "../../reducers/restaurants";
 
-const Nav = ({ location, history }) => {
+const Nav = ({ location, navigate }) => {
   const dispatch = useDispatch();
   const { user, isAuth } = useSelector((state) => state.auth);
   const [userLoc, setUserLoc] = useState(null);
@@ -164,7 +164,7 @@ const Nav = ({ location, history }) => {
     <>
       <nav>
         <div className="logo">
-          <h1 style={{ letterSpacing: "-1px" }} onClick={() => history.push("/")}>
+          <h1 style={{ letterSpacing: "-1px" }} onClick={() => navigate("/")}>
             FLENJO
           </h1>
         </div>
