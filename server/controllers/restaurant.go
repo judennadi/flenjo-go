@@ -13,7 +13,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// func enableCors(w *http.ResponseWriter) {
+// (*w).Header().Set("Access-Control-Allow-Origin", "*")
+// }
+
 func GetRestaurants(w http.ResponseWriter, r *http.Request) {
+
 	termArr := strings.Split(r.URL.Query().Get("term"), " ")
 	term := strings.Join(termArr, "+")
 	page, _ := strconv.Atoi(r.URL.Query().Get("page"))

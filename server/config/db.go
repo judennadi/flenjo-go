@@ -19,9 +19,9 @@ func init() {
 		log.Fatal(err)
 	}
 
-	err2 := database.Ping()
-	if err2 != nil {
-		log.Fatal(err2)
+	err = database.Ping()
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	fmt.Println("Connected to DB")
